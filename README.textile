@@ -1,0 +1,35 @@
+h1. Typo Internal Linker
+
+This plugin allow you to build your SEO internal linking displaying links from your articles tagging. Instead of having your tag links pointing to useless tag pages, they will point to articles using these words the most.
+
+h2. Installing Typo Internal Linker
+
+You can either download the source code and upload it into vendor/plugins or run 
+
+<pre>
+script/rails plugin install git://github.com/fdv/Typo-Internal-Linker.git
+</pre>
+
+After downloading this plugin, you'll have to run 2 rake tasks :
+
+The first one will create the needed database schema
+
+<pre>
+rake typo_internal_linker_create_table
+</pre>
+
+The second one will populate the table with your existing content
+
+<pre>
+rake typo_internal_linker_populate_table
+</pre>
+
+Remember to run the second one every time you publsh a new article as you'll need to update the table.
+
+Then in your theme, where you display a single article tag links, replace the line containing _tag_links(article)_ with:
+
+<pre>
+show_seo_tags(article)  
+</pre>
+
+Copyright (c) 2009 Frédéric de Villamil, released under the MIT license
